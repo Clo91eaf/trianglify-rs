@@ -11,9 +11,9 @@ struct Args {
     width: u32,
     #[arg(long, default_value = "600")]
     height: u32,
-    #[arg(short = 'b', long, default_value = "#31A054")]
+    #[arg(short = 'b', long, default_value = "#2980b9")]
     color_be: String,
-    #[arg(short = 'e', long, default_value = "#DB402E")]
+    #[arg(short = 'e', long, default_value = "#ffffff")]
     color_ed: String,
     #[arg(short, long)]
     file: Option<String>,
