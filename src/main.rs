@@ -7,15 +7,17 @@ use svg::Document;
 
 #[derive(Parser, Debug)]
 struct Args {
-    #[arg(long, default_value = "800")]
+    #[arg(long, default_value = "1920")]
     width: u32,
-    #[arg(long, default_value = "600")]
+    #[arg(long, default_value = "1080")]
     height: u32,
+    #[arg(long, default_value = "128")]
+    npoints: u32,
     #[arg(short = 'b', long, default_value = "#2980b9")]
     color_be: String,
     #[arg(short = 'e', long, default_value = "#ffffff")]
     color_ed: String,
-    #[arg(short, long)]
+    #[arg(short, long, default_value = "generated/image.svg")]
     file: Option<String>,
 }
 
@@ -79,9 +81,9 @@ impl Color {
     }
 }
 
-fn generate_points(width: u32, height: u32) -> Vec<Point> {
+fn generate_points(width: u32, height: u32, npoints: u32) -> Vec<Point> {
     let mut rng = rand::rngs::StdRng::from_entropy();
-    (0..100)
+    (0..npoints)
         .map(|_| {
             let x = rng.gen_range(0.0..width as f64);
             let y = rng.gen_range(0.0..height as f64);
@@ -152,7 +154,7 @@ fn output_result(
 fn main() {
     let args = Args::parse();
 
-    let points = generate_points(args.width, args.height);
+    let points = generate_points(args.width, args.height, args.npoints);
     let delaunay = triangulate(&points);
     let triangles = extract_triangles(&points, &delaunay);
 

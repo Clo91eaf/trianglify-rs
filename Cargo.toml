@@ -12,5 +12,5 @@ rand = "0.8.5"
 svg = "0.13.1"
 
 [[bin]]
-name = "trianglify" 
+name = "trianglify-rs" 
 path = "src/main.rs"
