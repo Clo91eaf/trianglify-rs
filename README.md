@@ -2,7 +2,7 @@
 
 Tranglify-rs 是一个使用 Rust 语言编写的命令行工具，用于生成类似下面三角形风格的壁纸。
 
-![Tranglify-rs example](generated/image.png)
+![Tranglify-rs example](./generated/image.png)
 
 ## 使用方法
 
